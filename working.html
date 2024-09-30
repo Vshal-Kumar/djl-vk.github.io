@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How DJL Works</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5ebe0; /* Light background */
+            font-family: Arial, sans-serif;
+            color: #333; /* Dark text */
+        }
+        h1 {
+            color: #03045e; /* Black color for headings */
+        }
+        h2 {
+            color: #023e8a; /* Darker blue for subheadings */
+        }
+        .container {
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px; /* Margin after the image */
+        }
+        pre {
+            background-color: #000;
+            color: white; /* Light background for code */
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0077b6; /* Footer color */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How DJL Works</h1>
+        <img src="archi.jpg" alt="DJL Architecture" class="img-fluid">
+        
+        <h2>Overview of DJL</h2>
+        <p>The Deep Java Library (DJL) is designed to facilitate the implementation, training, and deployment of deep learning models using Java. It abstracts the complexities associated with different deep learning frameworks, allowing Java developers to focus on building their applications without needing extensive knowledge of underlying frameworks like TensorFlow or PyTorch.</p>
+        
+        <h2>Key Components of DJL</h2>
+        <h3>1. Model</h3>
+        <p>Represents the architecture of a neural network. Users can create a new model or load a pre-trained model from the DJL Model Zoo.</p>
+        
+        <h3>2. Dataset</h3>
+        <p>Manages loading and preprocessing of data, ensuring data is prepared correctly for training and evaluation.</p>
+
+        <h3>3. Translator</h3>
+        <p>Converts input data to the format required by the model and vice versa, handling preprocessing and postprocessing.</p>
+
+        <h3>4. Trainer</h3>
+        <p>Manages the training and evaluation process of the model, allowing users to set hyperparameters and track training progress.</p>
+
+        <h2>How DJL Interacts with Frameworks and Hardware</h2>
+        <p>DJL acts as a bridge between Java applications, deep learning frameworks (like PyTorch), and hardware (like GPUs or CPUs). Here’s how the interaction works:</p>
+        <ul>
+            <li><strong>Java Application:</strong> The application code written in Java uses DJL’s API to define models, load data, and configure training.</li>
+            <li><strong>Frameworks:</strong> DJL internally calls the framework’s APIs (e.g., PyTorch) for operations like forward passes, backward passes, and optimizations. It manages the interactions, so developers don’t need to write code specific to each framework.</li>
+            <li><strong>Hardware:</strong> The framework is responsible for interacting with the hardware (like CPUs and GPUs). DJL ensures that data is efficiently transferred between the Java application and the framework, allowing operations to run on the appropriate device.</li>
+        </ul>
+
+        <h2>Complete Procedure of Using DJL</h2>
+        <h3>1. Define the Model</h3>
+        <pre><code>Model model = Model.newInstance("model-path");</code></pre>
+        
+        <h3>2. Prepare the Dataset</h3>
+        <pre><code>List<Data> data = dataset.loadAndProcess();</code></pre>
+
+        <h3>3. Configure the Trainer</h3>
+        <pre><code>Trainer trainer = Trainer.newInstance(model);
+trainer.setLearningRate(0.01);
+trainer.setBatchSize(32);</code></pre>
+
+        <h3>4. Train the Model</h3>
+        <pre><code>trainer.fit(trainingData);</code></pre>
+
+        <h3>5. Evaluate the Model</h3>
+        <pre><code>Metrics metrics = trainer.evaluate(validationData);</code></pre>
+
+        <h3>6. Make Predictions</h3>
+        <pre><code>NDArray prediction = model.predict(newInput);</code></pre>
+
+        <h3>7. Post-process Output</h3>
+        <p>Convert the output to a human-readable format using the Translator.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Deep Java Library</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
